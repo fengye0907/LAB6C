@@ -1,6 +1,6 @@
 #' LAB6C
 #'
-#' This is package for LAB6.
+#' This is package for lab6.
 #'
 #' @docType package
 #' @author Zijie Feng
