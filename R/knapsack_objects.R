@@ -1,6 +1,6 @@
 #' knapsack_objects
 #'
-#' @description This knapsack_objects is for the test of LAB6.
+#' @description This knapsack_objects is for the test of lab6.
 #'
 #' @docType data
 #'

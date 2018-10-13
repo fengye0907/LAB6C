@@ -6,7 +6,7 @@
 \alias{LAB6C-package}
 \title{LAB6C}
 \description{
-This is package for LAB6.
+This is package for lab6.
 }
 \author{
 Zijie Feng

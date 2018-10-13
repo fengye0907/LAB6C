@@ -1,10 +1,10 @@
 Package: LAB6C
 Type: Package
-Title: A package for LAB6
+Title: A package for lab6
 Version: 0.1.0
 Author: Group10
 Maintainer: Group10 <zijfe244@student.liu.se>
-Description: This package contains all the functions for LAB6.
+Description: This package contains all the functions for lab6.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
