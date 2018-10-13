@@ -1,0 +1,63 @@
+---
+title: "package for lab6"
+author: "Zijie Feng"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Vignette Title}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+# Introduction
+  To install this package you can use the code below:
+
+```{r eval=FALSE, message=FALSE, warning=FALSE}
+devtools::install_github('fengye0907/LAB6C',build_vignettes = TRUE)
+```
+
+The package contains three different functions for solving what is called the knapsack problem.
+The knapsack problem is a discrete optimization problem where we have a knapsack that can take a
+limited weight W and we want to fill this knapsack with a number of items i = 1, ..., n, each with a
+weight w_i and a value v_i. The goal is to find the knapsack with the largest value of the elements added
+to the knapsack.This problem is NP-hard, meaning that it is ”at least as hard as the hardest problem in
+NP” (https://en.wikipedia.org/wiki/NP-hardness). NP is a (fundamental) class of problems for which
+there are (currently) no polynomial time algorithms to solve them. It is an open (Millennium Prize)
+problem, whether it is or is not possible to solve these problemsin polynomial time.
+
+# Import
+To use the package you should import the package:
+```{r}
+    library(LAB6C)
+```
+
+# Methods and Examples
+
+The packagel contains three different functions for solving what is called the knapsack problem. They are Brute force search, Dynamic programming, Greedy heuristic.
+
+```{r}
+example <- knapsack(x = knapsack_objects[1:6,], W = 3500)
+example$brute_force_knapsack()
+```
+
+The `brute_force_knapsack()` is the only solution that is guaranteed to give a correct answer in all situations for the knapsack problem
+, i.e. going through all possible alternatives and return the maximum value found. This approach is of complexity O(2^n) since all possible combinations 2n needs to be evaluated.
+
+```{r}
+example$knapsack_dynamic()
+```
+
+If the weights are actually discrete values (as in our example) we can use this to create an algorithm `knapsack_dynamic()` that can solve the knapsack problem exact by iterating over all possible values of w.
+
+```{r}
+example$greedy_knapsack()
+```
+
+`greedy_knapsack()` will not give an exact result (but it can be shown that it will return at least 50% of the true maximum value), but it will reduce the computational complexity considerably (actually to O(n log n) due to the sorting part of the algorithm).
