@@ -10,6 +10,7 @@
 #' @field x
 #' @field W
 #' @import methods
+#' @importFrom parallel parSapply detectCores makeCluster stopCluster
 #' @export knapsack
 #' @exportClass knapsack
 
@@ -33,14 +34,24 @@ knapsack <- setRefClass("knapsack",
         stop("Please check your inputs.")
     },
     #Brute force search
-    brute_force_knapsack = function(){
+    brute_force_knapsack = function(parallel = FALSE){
       n <- nrow(x)
       idx <- 1:(2^n-1)
       t <- vector()
-      mat <- sapply(idx, function(id){
-        t <- cbind(t, as.integer(intToBits(id)))
-        t
-      })
+      if(parallel==TRUE){
+        clnum<-parallel::detectCores()
+        cl <- parallel::makeCluster(getOption("cl.cores", clnum))
+        mat <- parallel::parSapply(cl, idx, function(id){
+          t <- cbind(t, as.integer(intToBits(id)))
+          t
+        })
+        parallel::stopCluster(cl)
+      }else{
+        mat <- sapply(idx, function(id){
+          t <- cbind(t, as.integer(intToBits(id)))
+          t
+        })
+      }
       results <- t(x)%*%mat[1:nrow(x),]
       MAX <- max(as.matrix(results[,results[1,]<=W])[2,])
       best <- mat[,which(results[2,]==MAX)]

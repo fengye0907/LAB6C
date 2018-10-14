@@ -3,3 +3,7 @@
 export(knapsack)
 exportClasses(knapsack)
 import(methods)
+importFrom(parallel,detectCores)
+importFrom(parallel,makeCluster)
+importFrom(parallel,parSapply)
+importFrom(parallel,stopCluster)
