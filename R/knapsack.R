@@ -70,21 +70,36 @@ knapsack <- setRefClass("knapsack",
       for(j in 1:W){
         for(i in 1:n){
           if(cols[j]<w[i]){
-            mat[i,j] <- max(mat[i-1,j],0)
+            if(i-1==0)
+              mat[i,j] <- 0
+            else
+              mat[i,j] <- mat[i-1,j]
           }else{
-            V_add <- max(mat[i-1,(j-w[i])],0)
-            V_unadd <- max(mat[i-1,j],0)
-            mat[i,j] <- max(V_unadd, V_add + v[i])
+            if(i-1==0||(j-w[i]==0))
+              mat[i,j] <- 0
+            else{
+              V_add <- mat[i-1,(j-w[i])]
+              V_unadd <- mat[i-1,j]
+              mat[i,j] <- max(V_unadd, V_add + v[i])
+            }
           }
         }
       }
       FindWhat<-function(i, j){
         if(i>0){
-          if(mat[i,j]==max(mat[i-1,j],0)){
+          if((i-1)==0)
+            va <- 0
+          else
+            va <- mat[i-1,j]
+          if((j-w[i])==0||(i-1)==0)
+            va2 <- 0
+          else
+            va2 <- mat[i-1,(j-w[i])]
+          if(mat[i,j]==va){
             item[i]<<-0
             FindWhat(i-1,j)
           }
-          else if( j-w[i]>=0 && mat[i,j]==max(mat[i-1,(j-w[i])],0)+v[i]){
+          else if( j-w[i]>=0 && mat[i,j]==va2+v[i]){
             item[i]<<-1
             FindWhat(i-1,j-w[i])
           }
