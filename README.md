@@ -9,6 +9,7 @@
 
 ## Vignettes
 To see the report of lab6, use code:
+
 ``
     browseVignettes(package = "LAB6C")
 ``
