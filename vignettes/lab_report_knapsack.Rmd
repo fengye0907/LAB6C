@@ -16,8 +16,10 @@ knitr::opts_chunk$set(
 )
 ```
 ```{r}
-library(LAB6C)
+devtools::install_github("hadley/lineprof")
 library(lineprof)
+
+library(LAB6C)
 ```
 
 
