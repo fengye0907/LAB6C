@@ -6,7 +6,7 @@
 \alias{LAB6C-package}
 \title{LAB6C}
 \description{
-This is package for lab6.
+The package contains three different functions for solving what is called the knapsack problem.
 }
 \author{
 Zijie Feng

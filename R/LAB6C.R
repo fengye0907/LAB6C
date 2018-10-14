@@ -1,6 +1,6 @@
 #' LAB6C
 #'
-#' This is package for lab6.
+#' The package contains three different functions for solving what is called the knapsack problem.
 #'
 #' @docType package
 #' @author Zijie Feng
