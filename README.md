@@ -6,3 +6,9 @@
 ``
     devtools::install_github("fengye0907/LAB6C", build_vignettes = TRUE)
 ``
+
+## Vignettes
+To see the report of lab6, use code:
+``
+    browseVignettes(package = "LAB6C")
+``
